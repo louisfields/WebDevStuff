@@ -1,0 +1,312 @@
+<!--
+Programmer: YOUR NAME
+
+Complete the five JavaScript functions requiring ifs and for loops.
+
+1) minOfThree(a, b, c)
+2) romanNumeral(ch)
+3) sumOfFirstInts(n)
+4) factorial(n)
+5) beHappy(str)
+
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Five JS functions</title>
+</head>
+<body>
+
+
+	<script>
+		// Recommended: Write many more test cases. We provided
+		// one for each function to show you need parenthesis.
+		//
+		document.write('<h4>Edit in Eclipse, but use Chrome for testing<h4>');
+		document
+				.write('<h4>You will need Chrome >Setting > More tools > Developer tools or <h4>');
+		document.write('<h1>Ctrl+Shift+I<h1>');
+
+		document
+				.write('<h4>Should have 30 or more test cases showing true. We have 56.</h4>');
+		//
+		//
+		// 1) minOfThree
+		//
+		// Given three arguments of the same type, return the
+		// one that is less than or equal to the other two.
+		//
+		// minOfThree(1, 2, 3) returns 1
+		// minOfThree('three', 'two', 'one') returns one
+		// minOfThree(5.23, 5.23, 5.23) returns 5.23
+		//
+		function minOfThree(a, b, c) {
+			min = a;
+			if (b < a)
+				min = b;
+			if (c < min)
+				min = c;
+			return min;
+		}
+		// One test case. Your browser should show true, not false
+		document.write((minOfThree(888, 2222, 444) == 444) + '<br>');
+		document.write((minOfThree('abc', 'def', 'ghi') == 'abc') + '<br>');
+		document.write((minOfThree(3.4, -0.1, 0.0) == -0.1) + '<br>');
+
+		// 2) romanNumeral()
+		//
+		// Complete the free function romanNumeral that returns the numeric
+		// equivalent of an upper- or lower-case Roman numeral, which is a char.
+		// Roman numerals and their decimal equivalents are
+		// 'I' (or 'i') = 1
+		// 'V' (or 'v') = 5
+		// 'X' (or 'x') = 10
+		// 'L' (or 'l') = 50
+		// 'C' (or 'c') = 100
+		// 'D' (or 'd') = 500
+		// 'M' (or 'm') = 1,000
+		//
+		// If the input is not a valid Roman numeral, return -1
+		function romanNumeral(ch) {
+
+			//Basic switch for roman numerals
+			switch (ch) {
+
+			case 'i': {
+				return 1;
+			}
+			case 'ii': {
+				return 2;
+			}
+			case 'iii': {
+				return 3;
+			}
+			case 'iv': {
+				return 4;
+			}
+			case 'v': {
+				return 5;
+			}
+			case 'vi': {
+				return 6;
+			}
+
+			case 'vii': {
+				return 7;
+			}
+			case 'viii': {
+				return 8;
+			}
+			case 'ix': {
+				return 9;
+			}
+			case 'x': {
+				return 10;
+			}//-----------------------
+			case 'xi': {
+				return 11;
+			}
+			case 'xii': {
+				return 12;
+			}
+			case 'xiii': {
+				return 13;
+			}
+			case 'xiv': {
+				return 14;
+			}
+			case 'xv': {
+				return 15;
+			}
+			case 'xvi': {
+				return 16;
+			}
+			case 'xvii': {
+				return 17;
+			}
+			case 'xviii': {
+				return 18;
+			}
+			case 'xix': {
+				return 19;
+			}
+			case 'xx': {
+				return 20;
+			}
+			case 'xxi': {
+				return 21;
+			}
+			case 'xxii': {
+				return 22;
+			}
+			
+			}
+			return -1;
+
+		}
+		// One test case. Your browser should show true, not false. DONE
+		document.write((romanNumeral('x') == 10) + '<br>');
+
+		// 3) sumOfFirstInts
+		// Return the sum of the first n integers
+		// sumOfFirstInts(3) == 1 + 2 + 3
+		// Precondition: n >= 0 (no negatives, integers only
+
+		function sumOfFirstInts(n) {
+			var count;
+			var sum = 0;
+			if (n <= 0) {
+				return -1;
+			} else {
+				for (count = 0; count <= n; count++) {
+					sum += count;
+				}
+			}
+			return sum;
+		}
+
+		// One test case. Your browser should show true, not false
+		document.write((sumOfFirstInts(2) == 3) + '<br>');
+
+		// 4) factorial
+		//
+		// Given an integer n, return n!
+		// factorial(0) returns 1
+		// factorial(1) returns 1
+		// factorial(2) returns 2 * 1
+		// factorial(3) returns 3 * 2 * 1
+		// factorial(4) returns 4 * 3 * 2 * 1
+		// Precondition: n >= 0 and is an integer
+		function factorial(n) {
+			// TODO: Complete this function
+			var fac = 1;
+			var i = 0;
+
+			if (n == 0) {
+				return 1;
+			}
+
+			for (i = 1; i <= n; i++) {
+				fac = i * fac;
+			}
+
+			return fac;
+		}
+
+		// One test case. Your browser should show true, not false
+		document.write((factorial(2) == 2) + '<br>');
+
+		// 5) beHappy
+		//
+		// We'll say that a lowercase 'b' in a string is 'happy'
+		// if there is another 'b' immediately to its left or right.
+		// Return true if all the b's in the given string are happy.
+		//
+		// beHappy('xxbxx') returns false
+		// beHappy('xxbbxx') returns true
+		// beHappy('xxbbbxyz') returns true
+		// beHappy('qrbbstbuv') returns false
+		//
+		// beHappy('b') returns false
+		// beHappy('') returns true
+		//
+		// A 'b' at index 0 can not have another 'b' to its left
+		// beHappy("bxxbbbxx") returns false
+		//
+		// A 'b' at the last index can not need have another to its right
+		// beHappy("xxbbbxxb") returns false
+		//
+		// Precondition: all characters are lower case
+		function beHappy(str) {
+
+			var key = 'b';
+			var c = ' ';
+			
+			if(str.length == 0){
+				return true;
+			}
+			
+			if (str.length == 1) {
+				return false;
+			} 
+			else {
+				for (var i = 0; i < str.length; i++) {
+					c = str.charAt(i);
+					if (c == key) {
+						if (str.charAt(i - 1) == key && str.charAt(i + 1) == key) {
+							return true;
+						} else if (str.charAt(i + 1) == key) {
+							return true;
+						} else if (str.charAt(i - 1) == key) {
+							return true;
+						}
+					} 
+					else {
+						continue;
+					}
+
+				}
+				
+			}
+			return false;
+
+
+		}
+		// One test case. Your browser should show true, not false
+		document.write(!beHappy('b') + '<br>');
+		document.write(beHappy('') + '<br>');
+
+		//My Test cases
+		// One test case. Your browser should show true, not false
+		document.write((romanNumeral('i') == 1) + '<br>');
+		document.write((romanNumeral('ii') == 2) + '<br>');
+		document.write((romanNumeral('iii') == 3) + '<br>');
+		document.write((romanNumeral('iv') == 4) + '<br>');
+		document.write((romanNumeral('v') == 5) + '<br>');
+		document.write((romanNumeral('vi') == 6) + '<br>');
+		document.write((romanNumeral('vii') == 7) + '<br>');
+		document.write((romanNumeral('viii') == 8) + '<br>');
+		document.write((romanNumeral('ix') == 9) + '<br>');
+		document.write((romanNumeral('x') == 10) + '<br>');
+		document.write((romanNumeral('xi') == 11) + '<br>');
+		document.write((romanNumeral('xii') == 12) + '<br>');
+		document.write((romanNumeral('xiii') == 13) + '<br>');
+		document.write((romanNumeral('xiv') == 14) + '<br>');
+		document.write((romanNumeral('xv') == 15) + '<br>');
+		document.write((romanNumeral('xvi') == 16) + '<br>');
+		document.write((romanNumeral('xvii') == 17) + '<br>');
+		document.write((romanNumeral('xviii') == 18) + '<br>');
+		document.write((romanNumeral('xix') == 19) + '<br>');
+		document.write((romanNumeral('xx') == 20) + '<br>');
+		document.write((romanNumeral('xxi') == 21) + '<br>');
+		document.write((romanNumeral('xxii') == 22) + '<br>');
+		//Count number
+		document.write((sumOfFirstInts(3) == 6) + '<br>');
+		document.write((sumOfFirstInts(4) == 10) + '<br>');
+		document.write((sumOfFirstInts(-4) == -1) + '<br>');
+		//Fac
+		document.write((factorial(0) == 1) + '<br>');
+		document.write((factorial(3) == 6) + '<br>');
+		document.write((factorial(4) == 24) + '<br>');
+		document.write((factorial(5) == 120) + '<br>');
+		document.write((factorial(6) == 720) + '<br>');
+		document.write((factorial(7) == 5040) + '<br>');
+		document.write((factorial(8) == 40320) + '<br>');
+		document.write((factorial(9) == 362880) + '<br>');
+		document.write((factorial(10) == 3628800) + '<br>');
+		//Happy
+		document.write(beHappy('aaabbaaa') + '<br>');
+		document.write(beHappy('ababbaaa') + '<br>');
+		document.write(beHappy('aaabbaaa') + '<br>');
+		document.write(beHappy('aaabbbaaa') + '<br>');
+		document.write(beHappy('bbb') + '<br>');
+		document.write(beHappy('aaabbaaa') + '<br>');
+		document.write(!beHappy('aaabaaa') + '<br>');
+		document.write(beHappy('aaabbbbbbbbaaa') + '<br>');
+		document.write(beHappy('bb') + '<br>');
+		document.write(!beHappy('b') + '<br>');
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="styleblock.css">
+<title></title>
+</head>
+<body>
+
+	<h3 id="secondh3" onclick="hideDiv();showDiv();">Click this text </h3>
+	<hr width="100%"/>
+	<div id="first" class="unhidden">
+
+		<p>Click "Click this text" above to change this div in several ways.</p>
+
+	</div>
+	
+	<div id="second" class="hidden">
+
+		Change innerHTML, font 24 
+		   px, border 5px, width 300px,
+		   float right, padding 50px,
+		   background? you guess
+		
+
+	</div>
+	
+	
+	<script>
+	function hideDiv() {
+		document.getElementById('first').style.display = "none";
+
+	}
+	function showDiv() {
+		document.getElementById('second').style.display = "block";
+	}
+	
+	
+	
+	</script>
+	
+	
+
+</body>
+</html>

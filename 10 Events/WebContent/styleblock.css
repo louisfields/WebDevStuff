@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+#Result-Calc {
+	padding: 2px;
+	margin: 2px;
+}
+
+#MainBlock-Calc {
+	background: black;
+	padding: 2px;
+	height: 180px;
+	width: 300px;
+	margin-top: 20px;
+	margin: 2px;
+	border-style: solid;
+	border-width: 6px;
+	border-color: blue;
+	font-size: 12pt;
+	font-family: Courier;
+	color: white;
+}
+
+header, footer {
+	padding: 10px;
+	color: white;
+	background-color: blue;
+	clear: left;
+	text-align: center;
+	height: 20px;
+	font-size: 20px;
+}
+
+#firsth3 {
+	float: right;
+	padding: 40px;
+}
+
+#func-holder {
+	float: left;
+	background: lightgray;
+	width: 200px;
+	height: 450px;
+	padding: 10px;
+}
+
+#section {
+	float: center;
+	margin: 20px;
+	width: 50%;
+	height: 400px;
+}
+
+.b {
+	background-color: blue;
+	border: inset;
+	color: white;
+	padding: 2px 4px;
+	text-align: center;
+	text-decoration: none;
+	font-style: none;
+	font-family: times;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+#second {
+	padding: 50px;
+	border-style: solid;
+	border-color: red;
+	border-width: 5px;
+	float: right;
+	background: LightGrey;
+	color: green;
+	width: 300px;
+	height: 100px;
+	font-size: 24px;
+	text-align: center;
+	vertical-align: top;
+}
+
+#hoverThis {
+	padding: 2px; font-size : 15px;
+	text-align: center;
+	background: pink;
+	width: 120px;
+	height: 20px;
+	border-style: solid;
+	border-color: red;
+	border-width: 2px;
+	font-size: 15px;
+}
+
+#countHover {
+	padding: 2px;
+	font-size: 15px;
+	text-align: center;
+	margin-top: 20px;
+	background: pink;
+	width: 120px;
+	height: 20px;
+	border-style: solid;
+	border-color: red;
+	border-width: 2px;
+}
+
+#pixB {
+	background-color: blue;
+	border: inset;
+	color: white;
+	padding: 2px 4px;
+	text-align: center;
+	text-decoration: none;
+	font-style: none;
+	font-family: times;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+
+.hidden {
+	display: none;
+}
+
+.unhidden {
+	display: block;
+}

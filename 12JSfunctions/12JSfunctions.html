@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h4>This file contains twelve function specs, 12 stubs, and a few
+		console.asserts</h4>
+	<h4>Use the console of the browser to find errors, output and
+		failing assserts</h4>
+	<h4>Use console.assert(boolean) for test cases and
+		console.log(string) for debugging</h4>
+
+	<script>
+		/*
+		 * 12 JavaScript functions requiring functions, console.assert, selection, repetition,
+		 * strings, and arrays. The code contains a few asserts to shw the syntax.  You should add
+		 * many more asserts to tests. It is important to be able to write your own tests.
+		 * 
+		 * Programmer: Luis Manuel Campos 
+		 */
+
+		// 1) howSwedish
+		// ABBA is a band, they have many songs including Dancing Queen, and
+		// Fernando. ABBA is actually a Swedish band, so if we wanted to find
+		// out howSwedish a String is, we could simply find out how many times
+		// the String contains the substring "abba". We want to look for this
+		// substring in a case insensitive manner. So "abba" counts, and so
+		// does "aBbA". We also want to check for overlapping abba's such as
+		// in the String "abbAbba" that contains "abba" twice.
+		// howSwedish("AbBa a b b a") returns 1
+		// howSwedish("abbabba!") returns 2
+		function howSwedish(str) {
+			var i;
+			var count = 0;
+			str = str.toLowerCase();
+			if (str.length >= 4) {
+				for (i = 0; i < str.length - 3; i++) {
+					if ((str.substring(i, i + 4).localeCompare("abba")) == 0) {
+						count++;
+					}
+
+				}
+			}
+			return count;
+		}
+		console.assert(0 == howSwedish('no'), {
+			"message" : "puto this is false"
+		});
+		console.assert(1 == howSwedish('axxc AbBa Xx'));
+		console.assert(2 == howSwedish('abbabba'));
+		console.assert(2 == howSwedish('abbabba'));
+		console.assert(3 == howSwedish('abbabbaabba'));
+		console.assert(4 == howSwedish('abbabbaabbaabba'));
+		console.log("PASSED: FUNCTION 1");
+
+		// 2)  mirrorEnds
+		// Complete method mirrorEnds that given a string, looks for a mirror 
+		// image (backwards) string at both the beginning and end of the given string. 
+		// In other words, zero or more characters at the very beginning of the given 
+		// string, and at the very end of the string in reverse order (possibly overlapping). 
+		// For example, "abXYZba" has the mirror end "ab". 
+		//
+		//
+		function mirrorEnds(str) {
+			// TODO: Complete this method
+			var match = 0;
+			var buildThis = "";
+			if (str.length == 0) {
+				return "";
+			} else {
+				for (var i = 0; i < str.length; i++) {
+					if ((str.charAt(i) == str.charAt(str.length - i - 1))) {
+						buildThis += str.charAt(i);
+					} else {
+						break;
+					}
+				}
+			}
+
+			return buildThis;
+		}
+		console.assert("" == mirrorEnds(""));
+		console.assert("" == mirrorEnds("abcde"));
+		console.assert("a" == mirrorEnds("abca"));
+		console.assert("aba" == mirrorEnds("aba"));
+		console.assert("ab" == mirrorEnds("abXYZba"));
+		console.log("PASSED: FUNCTION 2");
+
+		// 3) isStringSorted
+		// Given a String, return true if the letters are in ascending order.
+		// Note: 'a' < 'b' and '5' < '8'
+		// isStringSorted("") returns true
+		// isStringSorted("a") returns true
+		// isStringSorted("abbcddef") returns true
+		// isStringSorted("123456") returns true
+		// isStringSorted("12321") returns false
+		function isStringSorted(str) {
+			for (var i = 1; i < str.length; i++) {
+				if (str.charAt(i - 1) > str.charAt(i)) {
+					return false;
+				}
+			}
+			return true;
+
+		}
+		console.assert(isStringSorted("abbcddef") == true);
+		console.assert(isStringSorted("12321") == false);
+		console.assert(isStringSorted("1273483485321") == false);
+		console.assert(isStringSorted("111111888882321") == false);
+		console.assert(isStringSorted("vivaperucarajo") == false);
+		console
+				.assert(isStringSorted("abbcddefghhhhhiiiiijkllllmmmnnooop") == true);
+		console.log("PASSED: FUNCTION 3");
+
+		// 4) maxBlock
+		// Given a string, return the length of the largest "block" in the string.
+		// A block is a run of adjacent chars that are the same.
+		// maxBlock("hoopla") returns 2
+		// maxBlock("abbCCCddBBBxx") returns 3
+		// maxBlock("") returns 0
+		//
+
+		function maxBlock(str) {
+			//Check first to see if the str is not zero in length.
+			if (str.length == 0)
+				return 0;
+			//To lower the entire string and store it in a new value.
+			var intArray = new Array();
+			var match = 0;
+			var max = 0;
+			//Loop through the entire string
+			for (var i = 0; i < str.length; i++) {
+				if (str.charCodeAt(i) == str.charCodeAt(i + 1)) {
+					match++;
+
+				} else {
+					if (match >= max) {
+						max = match;
+						match = 0;
+					} else {
+						match = 0;
+					}
+				}
+			}
+			return max + 1;
+		}
+
+		console.assert(maxBlock("abbcddef") == 2);
+		console.assert(maxBlock("hoopla") == 2);
+		console.assert(maxBlock("hooplaaaaaa") == 6);
+		console.assert(maxBlock("") == 0);
+		console.assert(maxBlock("cccfffhhhhh") == 5);
+		console.log("PASSED: FUNCTION 4");
+
+		// 5) isArraySorted
+		// Given an array , return true if the element are in ascending order.
+		// Note: 'abe' < 'ben' and 5 > 3
+		// Precondition arr has all the same type of elements
+		function isArraySorted(arr) {
+			var i;
+			for (i = 0; i < arr.length - 1 && arr[i] < arr[i + 1]; i++) {
+			}
+			return (i == arr.length - 1);
+
+		}
+		console.assert(isArraySorted([ "abe", "ben" ]) == true);
+		console.assert(isArraySorted([ 1, 2, 3, 4, 5, 6, 7 ]) == true);
+		console.assert(isArraySorted([ 1, 2, 35, 4, 5, 6, 7 ]) == false);
+		console.assert(isArraySorted([ "abe", "ben" ]) == true);
+		console.assert(isArraySorted([ 1, 2, 3, 4, 5, 6, 7 ]) == true);
+		console.assert(isArraySorted([ 1, 2, 35, 4, 5, 6, 7 ]) == false);
+
+		console.assert(isArraySorted([ "abe", "ben", "cen" ]) == true);
+		console.assert(isArraySorted([ 1, 78, 3, 4, 5, 6, 7 ]) == false);
+		console.assert(isArraySorted([ 1, 2, 35, 4, 5, 6, 7 ]) == false);
+
+		console.assert(isArraySorted([ "abe", "ben" ]) == true);
+		console.assert(isArraySorted([ 1, 2, 3, 4, 5, 6, 7 ]) == true);
+		console.assert(isArraySorted([ 1, 2, 35, 4, 5, 68, 7 ]) == false);
+
+		console.log("PASSED: FUNCTION 5");
+
+		//Used to sort the array for numberOfPairs. Credit
+		function bubbleSort(arr) {
+			var swap;
+			do {
+				swap = false;
+				for (var i = 0; i < arr.length - 1; i++) {
+					if (arr[i] > arr[i + 1]) {
+						var temp = arr[i];
+						arr[i] = arr[i + 1];
+						arr[i + 1] = temp;
+						swap = true;
+					}
+				}
+			} while (swap);
+		}
+
+		// 6) numberOfPairs
+		// Return the number of times a pair occurs in array. A pair is any two String values that are equal (case
+		// sensitive) in consecutive array elements. The array may be empty or have only one element. In both of
+		// these cases, return 0.
+		//
+
+		// Precondition: arr has all the same type of elements
+		function numberOfPairs(arr) {
+			//First call bubble sort, to sort the array elements
+			bubbleSort(arr);
+			var pair = 0;
+			if (arr.length == 1 || arr.length == 0)
+				return 0;
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i] == arr[i + 1]) {
+					pair++;
+				}
+			}
+			return pair;
+		}
+		console.assert(numberOfPairs([ 1, 2, 3, 4, 5, 6, 7 ]) == 0);
+		console.assert(numberOfPairs([ 'a', 'a', 'a' ]) == 2);
+		console.assert(numberOfPairs([ 'a', 'a', 'a', 'a' ]) == 3);
+		console.assert(numberOfPairs([ 'a', 'a', 'a', 'b' ]) == 2);
+		console.assert(numberOfPairs([]) == 0);
+		console.assert(numberOfPairs([ 'a' ]) == 0);
+		console.assert(numberOfPairs([ 'a', 'b', 'c' ]) == 0);
+		console.log("PASSED: FUNCTION 6");
+
+		// 7) frequency(array)
+		// Given an  array of integers in the range of 0..10 (like quiz scores), 
+		// return an array of 11 integers where the first value (at index 0) is the
+		// number of 0s in the array argument, the second value (at index 1) is the number 
+		// of ones in the array and the 11th value (at index 10) is the number of tens in the array.
+		//
+		// Precondition: array has valid ints in the range of 0..10
+		function frequency(array) {
+			var temp = 0;
+			var grades = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
+			for (var i = 0; i < grades.length; i++) {
+				for (var j = 0; j < array.length; j++) {
+					if (grades[i] == array[j]) {
+						temp++;
+					}
+				}
+				grades[i] = temp;
+
+				temp = 0;
+
+			}
+			return grades;
+		}
+		var ints = [ 0, 0, 0, 1, 1, 4, 5, 6, 7, 7, 7, 7, 7, 8, 9, 10, 10 ];
+
+		console.log("PASSED: FUNCTION 7");
+
+		// 8) shiftNTimes(array, numShifts)
+		//
+		// Modify array so it is "left shifted" n times -- so shiftNTimes(array(6, 2, 5, 3), 1) 
+		// changes the array argument to (2, 5, 3, 6) and shiftNTimes(array(6, 2, 5, 3), 2) 
+		// changes the array argument to (5, 3, 6, 2). You must modify the array argument by 
+		// changing the parameter named nums inside method shiftNTimes. A change to nums inside 
+		// the method shiftNTimes changes the argument.  Do not return anything.
+		//
+		// shiftNTimes( array(1, 2, 3, 4, 5, 6, 7), 3 ) modifies array to ( 4, 5, 6, 7, 1, 2, 3 )
+		// shiftNTimes( array(1, 2, 3), 5) modifies array to (3, 1, 2)
+		// shiftNTimes( array(3), 5) modifies array to (3)
+		//
+		function shiftNTimes(nums, numShifts) {
+			var temp;
+			for (var i = 0; i < numShifts; i++) {
+				temp = nums[0];
+				for (var j = 0; j < nums.length - 1; j++)
+					nums[j] = nums[j + 1];
+				nums[nums.length - 1] = temp;
+			}
+
+		}
+
+		var thisArray = [ 1, 2, 3, 4, 5, 6, 7, 8 ];
+		shiftNTimes(thisArray, 2);
+		/* console.log(thisArray); */
+		shiftNTimes(thisArray, 5);
+		/* console.log(thisArray); */
+		console.log("PASSED: FUNCTION 8");
+
+		// 9) addToSet
+		// Complete method addToSet(set, number) such that number is added
+		// at the end of the array parameter set only if it does not exist alreay.
+		//
+		// Precondition: each argument is alway a number.  No type mixing
+		function addToSet(set, number) {
+			// TODO: Complete this method. Modify set here, do not return anything.
+			var foundNum = false;
+			for (var i = 0; i < set.length; i++) {
+				if (set[i] == number) {
+					foundNum = true;
+				}
+			}
+			if (!foundNum) {
+				set[set.length] = number;
+			}
+		} //whyy dont u use push for this??
+		var set = [];
+		addToSet(set, 5);
+		addToSet(set, 4);
+		addToSet(set, 4);
+		addToSet(set, 3);
+		addToSet(set, 3);
+		addToSet(set, 2);
+		addToSet(set, 2);
+		console.assert(5 == set[0]);
+		console.assert(4 == set[1]);
+		console.assert(3 == set[2]);
+		console.assert(2 == set[3]);
+		console.assert(4, set.length);
+		addToSet(set, 10);
+		console.log("PASSED: FUNCTION 9");
+
+		// 10)  Say that a "clump" in an array is a series of 2 or more adjacent elements of the same value. 
+		// Return the number of clumps in the given array.  
+		//
+		//  countClumps( array ( 1, 2, 2, 3, 4, 4 ) ) returns 2
+		//  countClumps( array(  1, 1, 2, 1, 1 ) ) returns 2
+		//  countClumps(array ( 1, 1, 1, 1, 1 ) ) returns 1
+		//  countClumps(array ( 1, 2, 3) ) returns 0
+		//  countClumps(array ( 2) ) returns 0
+		function countClumps(arr) {
+			var clumps = 0;
+			var countClumps;
+			var currentClump = 0
+			var clumpIndex = 0;
+			var maxClump = 0;
+			var last = arr[0];
+			var clump = false;
+
+			for (var i = 1; i < arr.length; i++) {
+				if (arr[i] == last) {
+					if (clump = true) {
+						continue;
+					} 
+					else {
+						clump = true;
+						last = arr[i];
+					}
+				} 
+				else {
+
+					if (clump == true) {
+						clumps++;
+						clump = false;
+						last = arr[i];
+
+					} else {
+						
+						last = arr[i];
+						continue;
+					}
+
+				}
+			}
+			return clumps;
+
+		}
+		console.assert((countClumps[1, 2, 3]) == 0);
+		console.assert((countClumps[1, 2, 2, 2, 2, 3]) == 1);
+
+		// 11) evenOdd(array)
+		//
+		// Modify array that contains the exact same numbers as the given array, but rearranged so that all
+		// the even numbers come before all the odd numbers. Other than that, the numbers can be in any order.
+		//
+		// evenOdd([1, 0, 1, 0, 0, 1, 1]) changes the argument to [0, 0, 0, 1, 1, 1, 1]
+		// evenOdd([3, 3, 2]) changes the argument to [2, 3, 3]
+		// evenOdd([3, 5, 4, 2]) changes the argument to [2, 4, 3, 5] or [4, 2, 3, 5] or [2, 4, 5, 3] or [4, 2, 5, 3]   
+		//
+		// Precondition: All array elements are integers (whole nmbers)
+		function evenOdd(array) {
+			// TODO: Complete this function 	 
+			var doingFine = false;
+			var evenOddArray = [];
+			var arrEven = [];
+			var arrOdd = [];
+			var indexEven = 0;
+			var indexOdd = 0;
+			for (var i = 0; i < array.length - 1; i++) {
+				if (array[i] % 2 == 0) {
+					arrEven[indexEven] = array[i];
+					indexEven++;
+				} else {
+					arrOdd[indexOdd] = array[i];
+					indexOdd++;
+				}
+
+			}
+			var indexFinal = 0;
+			for (var i = 0; i < arrEven.length - 1; i++) {
+				evenOddArray[indexFinal] = arrEven[i];
+				indexFinal++;
+			}
+			for (var i = 0; i < arrOdd.length - 1; i++) {
+				evenOddArray[indexFinal] = arrOdd[i];
+				indexFinal++;
+			}
+			return result;
+
+		}
+
+		var array = [ 5, 6, 8, 10, 12, 3, 3, 1, 0, 26 ];
+		array = evenOdd(array);
+		console.log(array);
+		console.assert(array[0] == 2);
+		console.assert(array[1] == 2);
+		console.assert(array[2] == 3);
+		console.assert(array[3] == 3);
+
+		// 12) writeAshape
+		//
+		// This method must print (not return) a triangle that is written to the web page 
+		// using document.write. Here is a triangle of height 6. There are leading spaces. 
+		// The dots are present to the triangle from floating left when you auto-format this 
+		// page in Eclipse. Leading Spaces / are not respected and disappear.  
+		// 
+		// Do not docuument.write five dots '....', instead document.write five spaces.	
+		//
+		// .....x
+		// ....xxx
+		// ...xxxxx
+		// ..xxxxxxx
+		// .xxxxxxxxx
+		// xxxxxxxxxxx
+		//
+		// Precondition: n >= 1 and ch is not a empty string or a space 
+
+		function printSpaces(num) {
+			var str = "";
+			for (var i = 0; i < num; i++) {
+				str += '\xa0';
+			}
+			return str;
+		}
+		function printChars(num, ch) {
+			var str = "";
+			for (var i = 0; i < num; i++) {
+				str += ch;
+			}
+			return str;
+		}
+
+		function writeAShape(n, ch) {
+			var numOfSpaces = 5;
+			// TODO: Complete this method so it write the triangle to the web page. No console.asserts needed.
+			if (ch == '' || ch == ' ' || n < 1) {
+				return;
+			}
+			var res;
+
+			for (var i = 1; i <= n; i++) {
+
+				res = printSpaces(numOfSpaces).concat((printChars(i, ch)));
+				document.write(res);
+				numOfSpaces--;
+				document.write("<br />");
+			}
+		}
+	</script>
+
+</body>
+</html>

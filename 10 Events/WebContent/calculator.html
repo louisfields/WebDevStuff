@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>A Simple Calculator</title>
+<link rel="stylesheet" type="text/css" href="styleblock.css">
+</head>
+<body>
+
+
+	<h4>Calculator</h4>
+
+	x
+	<input type="text" id="x" value="">
+	<br> y
+	<input type="text" id="y" value="">
+	<br>
+
+	<button onclick="showDiv();">Show results</button>
+
+	<div id="Result-Calc" class="unhidden">
+		<p id="restext-calc">Results will be show here</p>
+	</div>
+
+	<div id="MainBlock-Calc" class="hidden">
+		<p id="addResult">
+			<br>
+		</p>
+		<p id="subResult">
+			<br>
+		</p>
+		<p id="mulResult">
+			<br>
+		</p>
+		<p id="divResult">
+			<br>
+		</p>
+		<p id="modResult"></p>
+
+	</div>
+
+
+
+
+	<script>
+		function fireFuncs() {
+			add();
+			sub();
+			mul();
+			div();
+			mod();
+		}
+
+		function add() {
+			var printRes = "";
+			var xVal = +document.getElementById("x").value;
+			var yVal = +document.getElementById("y").value;
+			var result = xVal + yVal;
+			printRes = xVal + '\xa0' + '\xa0' + '+' + '\xa0' + '\xa0' + yVal
+					+ '\xa0' + '\xa0' + "=" + '\xa0' + '\xa0' + result;
+			document.getElementById("addResult").innerHTML = printRes;
+
+		}
+		function sub() {
+			var printRes = "";
+			var xVal = +document.getElementById("x").value;
+			var yVal = +document.getElementById("y").value;
+			var result = xVal - yVal;
+			printRes = xVal + '\xa0' + '\xa0' + '-' + '\xa0' + '\xa0' + yVal
+					+ '\xa0' + '\xa0' + "=" + '\xa0' + '\xa0' + result;
+			document.getElementById("subResult").innerHTML = printRes;
+
+		}
+		function mul() {
+			var printRes = "";
+			var xVal = +document.getElementById("x").value;
+			var yVal = +document.getElementById("y").value;
+			var result = xVal * yVal;
+			printRes = xVal + '\xa0' + '\xa0' + '*' + '\xa0' + '\xa0' + yVal
+					+ '\xa0' + '\xa0' + '=' + '\xa0' + '\xa0' + result;
+			document.getElementById("mulResult").innerHTML = printRes;
+
+		}
+		function div() {
+			var printRes = "";
+			var xVal = +document.getElementById("x").value;
+			var yVal = +document.getElementById("y").value;
+			var result = xVal / yVal;
+			printRes = xVal + '\xa0' + '\xa0' + '/' + '\xa0' + '\xa0' + yVal
+					+ '\xa0' + '\xa0' + '=' + '\xa0' + '\xa0' + result;
+			document.getElementById("divResult").innerHTML = printRes;
+
+		}
+		function mod() {
+			var printRes = "";
+			var xVal = +document.getElementById("x").value;
+			var yVal = +document.getElementById("y").value;
+			var result = xVal % yVal;
+			printRes = xVal + '\xa0' + '\xa0' + '%' + '\xa0' + '\xa0' + yVal
+					+ '\xa0' + '\xa0' + '=' + '\xa0' + '\xa0' + result;
+			document.getElementById("modResult").innerHTML = printRes;
+
+		}
+		function showDiv() {
+			document.getElementById('MainBlock-Calc').style.display = "block";
+			document.getElementById('Result-Calc').style.display = "none";
+			fireFuncs();
+		}
+	</script>
+
+
+
+</body>
+</html>

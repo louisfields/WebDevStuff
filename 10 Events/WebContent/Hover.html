@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="styleblock.css">
+
+<title></title>
+</head>
+<body>
+
+	<div id="hoverThis" onmouseenter="myEnterFunction()">Hover over me</div>
+
+
+	<div id="countHover">Excited 0 times</div>
+
+	<script>
+	var i = 0;
+	function myEnterFunction() {
+		i++;
+		if(i == 1){
+			document.getElementById("countHover").innerHTML = 'Excited ' + i + ' time';
+		}
+		else{
+	    document.getElementById("countHover").innerHTML = 'Excited ' + i + ' times';
+		}
+	}
+	
+	</script>
+
+
+
+
+</body>
+</html>

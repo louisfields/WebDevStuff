@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="styleblock.css">
+
+<title></title>
+</head>
+<body>
+
+	<button id="b2" value="val" onclick="change();">Hide</button>
+
+	<div id="Hide-Show-Div" class="unhidden">
+		<p>This text will appear and disapper.</p>
+	</div>
+
+
+
+	<script>
+		function hideDiv() {
+			document.getElementById('Hide-Show-Div').style.display = "none";
+
+		}
+		function showDiv() {
+			document.getElementById('Hide-Show-Div').style.display = "block";
+		}
+
+		function change() {
+			var change = document.getElementById("b2");
+			if (change.innerHTML == "Hide") {
+				hideDiv();
+				change.innerHTML = "Show";
+
+			} else {
+				change.innerHTML = "Hide";
+				showDiv();
+				return false;
+			}
+		}
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sum</title>
+</head>
+<body>
+
+	Enter a number:
+	<input type="text" id="field" value="" onkeypress="han(event)">
+
+	<p>
+		<span id="array">Sum of [] = 0</span>
+	</p>
+
+	<script>
+		var nums = [];
+		function han(e) {
+			if (e.keyCode === 13) {
+				e.preventDefault(); // Ensure it is only this code that rusn
+				addNum();
+			}
+		}
+		function addNum() {
+			var num = document.getElementById('field').value;
+			nums.push(num);
+			var sum = getSum(nums);
+			document.getElementById('array').innerHTML = "Sum of ["
+					+ nums.toString() + "] = " + sum.toString();
+			document.getElementById('field').value = "";
+		}
+		
+		function getSum(ints){
+			var thissum = 0;
+			for(var i = 0; i < ints.length; i++){
+				thissum = parseInt(thissum) + parseInt(ints[i]);
+			}
+			return thissum;
+		}
+		
+		
+		
+	</script>
+
+
+</body>
+</html>

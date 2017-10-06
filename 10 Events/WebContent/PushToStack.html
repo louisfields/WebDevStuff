@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PushStackPop</title>
+</head>
+<body>
+
+	Push
+	<input type="text" id="field" onkeypress="pressEnter(event);">
+	<button id="pop" value="" onclick="pop();">Pop</button>
+
+	<ul id="list">
+	</ul>
+
+
+	<script>
+		function pressEnter(e) {
+			if (e.keyCode === 13) {
+				e.preventDefault(); // Ensure it is only this code that rusn
+				var item = document.getElementById('field').value;
+				push(item);
+			}
+		}
+		function push(item) {
+			var node = document.createElement("LI");
+			var textnode = document.createTextNode(item.toString());
+			node.appendChild(textnode);
+			document.getElementById("list").appendChild(node);
+			document.getElementById('field').value = "";
+
+		}
+
+		function pop() {
+			var list = document.getElementById("list");
+			if (list.hasChildNodes()) {
+				list.removeChild(list.childNodes[1]);
+			}
+		}
+	</script>
+
+
+
+</body>
+</html>

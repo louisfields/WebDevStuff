@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="styleblock.css">
+<title>PixInc</title>
+</head>
+<body>
+
+	<button id="pixB" value="val" onclick="changeFontSize();">Increment
+		by 1px</button>
+
+	<p id="incthis" style="font-size:12pt" >Increase my point size by 1px each click.</p>
+
+	<script>
+		function changeFontSize() {
+			var str = document.getElementById("incthis").style.fontSize;
+			var val = parseInt(str);
+			val += 1;
+			var str2 = val.toString();
+			document.getElementById("incthis").style.fontSize = str2 + "pt";
+
+		}
+	</script>
+
+
+
+
+</body>
+</html>

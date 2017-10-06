@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AddToArray</title>
+</head>
+<body>
+
+	Enter name:
+	<input type="text" id="field" value="" onkeypress="handle(event)">
+
+	<p>The array of names:</p>
+
+	<div id="tableContainer">
+
+		<table id="table">
+
+		</table>
+
+	</div>
+
+	<script>
+		var names = [];
+		var i = 0;
+		function handle(e) {
+			var arr = [];
+			if (e.keyCode === 13) {
+				i++;
+				e.preventDefault(); // Ensure it is only this code that rusn
+				addName(i);
+			}
+		}
+
+		function addName(index) {
+			var nameTxt = document.getElementById('field');
+			var name = nameTxt.value;
+			names.push(name);
+			var table = document.getElementById('table');
+			var r = document.createElement('tr');
+			var enter = document.createElement('td');
+			var node = document.createTextNode(index + ". " + name);
+			index++;
+			enter.appendChild(node);
+			r.appendChild(enter);
+			table.appendChild(r);
+			/* clear the field after */
+			document.getElementById('field').value  = "";
+			
+
+		}
+	</script>
+
+
+
+</body>
+</html>

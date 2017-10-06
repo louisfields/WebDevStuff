@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script>
+	/* function resizeIframe(obj) {
+		obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+	} */
+</script>
+<link rel="stylesheet" type="text/css" href="styleblock.css">
+<title>Event Driven JS</title>
+</head>
+<body>
+	<header>Using JavaScript to Change the HTML</header>
+
+
+	<iframe id="section" src="intro.html" style="overflow:hidden; border: 0px; ">
+	
+	</iframe>
+
+
+	<div id="func-holder">
+
+		<button class="b" onclick="setFrame('calculator.html')">0)
+			Calculator</button>
+
+		<br>
+		<button class="b" onclick="setFrame('Hide-Show.html')">1) Hide /
+			Show</button>
+		<br>
+		<button class="b" onclick="setFrame('Change7styles.html')">2) Changes 7 styles</button>
+		<br>
+		<button class="b" onclick="setFrame('MoveText.html')">3) Move Text</button>
+		<br>
+		<button class="b" onclick="setFrame('AddToArray.html')">4) Add to Array</button>
+		<br>
+		<button class="b" onclick="setFrame('Hover.html')">5) Over Out</button>
+		<br>
+		<button class="b" onclick="setFrame('GrowPic.html')">6) Growing Image</button>
+		<br>
+		<button class="b" onclick="setFrame('PixIncrease.html')">7) Pixel Increase</button>
+		<br>
+		<button class="b" onclick="setFrame('RunningSum.html')">8) Running Sum</button>
+		<br>
+		<button class="b" onclick="setFrame('PushToStack.html')">9) Stack Changes</button>
+		<br>
+
+
+	</div>
+
+	<script>
+		function setFrame(frame) {
+			document.getElementById('section').src = frame;
+		}
+	</script>
+
+
+	<footer>Created by Luis Manuel Campos</footer>
+
+
+</body>
+
+
+
+</html>
