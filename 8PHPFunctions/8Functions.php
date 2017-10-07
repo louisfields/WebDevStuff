@@ -27,7 +27,6 @@ function howSwedish($str) {
    		
    	}
    }
-  print($count);
   return $count;
 }
 
@@ -56,7 +55,19 @@ function howSwedish($str) {
 // sumOfFirstInts(3) == 1 + 2 + 3
 // Precondition: $n >= 0 (no negatives, integers only)
 function sumOfFirstInts($n) {
-  return - 999;
+	$sum = 0;
+	if($n <= 0){
+		echo("n can not be less than or equal to zero!");
+		echo("\r\n");
+		return 0;
+	}
+	
+	for($i = 1; $i <= $n; $i++){
+		$sum += $i;
+		
+	}
+	return $sum;
+	
 }
 
 // 3) factorial
@@ -70,8 +81,23 @@ function sumOfFirstInts($n) {
 //
 // Precondition:  $n >= 0 and is an integer
 function factorial($n) {
-  return -999;
+	$fac = 1;
+	$i = 0;
+	if($n < 0) {
+		echo("No negs please");
+		return 0;
+	}
+	if($n == 0) return 1;
+	
+	for($i = 1; $i <= $n; $i++){
+		$fac = $i * $fac;
+	}
+	return $fac;
 }
+
+
+
+
 
 // 4)  mirrorEnds
 // Complete method mirrorEnds that given a string, looks for a mirror
@@ -86,8 +112,57 @@ function factorial($n) {
 // assert("aba" ==  mirrorEnds("aba"));
 //
 function mirrorEnds($str) {
-  return "TBA";
+	$charAt;
+	$match = 0;
+	$buildThis = "";
+	$lengthStr = strlen($str);
+	if (strlen($str) == 0) {
+			return "";
+		} else {
+			for ($i = 0; $i < $lengthStr; $i++) {
+				$charAt_i = $str{$i};
+				$charAt_length = $str{$lengthStr - $i - 1};
+				if ($charAt_i == $charAt_length) {
+					$buildThis += $charAt_i;
+				} else {
+					break;
+				}
+			}
+		}
+	
+		return $buildThis;
 }
+
+
+
+// function mirrorEnds(str) {
+// 	// TODO: Complete this method
+// 	var match = 0;
+// 	var buildThis = "";
+// 	if (str.length == 0) {
+// 		return "";
+// 	} else {
+// 		for (var i = 0; i < str.length; i++) {
+// 			if ((str.charAt(i) == str.charAt(str.length - i - 1))) {
+// 				buildThis += str.charAt(i);
+// 			} else {
+// 				break;
+// 			}
+// 		}
+// 	}
+	
+// 	return buildThis;
+// }
+
+
+
+
+
+
+
+
+
+
 
 // 5) isStringSorted
 // Given a String, return true if the letters are in ascending order.
